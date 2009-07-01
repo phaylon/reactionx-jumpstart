@@ -1,0 +1,36 @@
+package [% controller_package %];
+use strict;
+use warnings;
+use parent '[% controller_base %]';
+
+use Reaction::Class;
+
+[%- IF site_layout_is_pushed %]
+use aliased '[% site_layout_class %]' => 'SiteLayout';
+[% END -%]
+
+use namespace::autoclean;
+
+__PACKAGE__->config(
+[% controller_config | indent(4) %]
+);
+
+sub base: Chained('[% base_chained_to %]') PathPart('[% base_path_part %]') CaptureArgs(0) { }
+
+[%- IF site_layout_is_pushed %]
+sub site: Chained('base') PathPart('') CaptureArgs(0) {
+    my ($self, $ctx) = @_;
+
+    $self->push_viewport(SiteLayout,
+        static_base_uri => $ctx->uri_for('/static')->as_string,
+        title           => $self->window_title,
+        meta_info       => {
+            http_header     => {
+                'Content-Type'  => 'text/html;charset=utf-8',
+            },
+        },
+    );
+}
+[% END -%]
+
+1;

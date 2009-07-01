@@ -1,0 +1,15 @@
+name [% application_name %]
+
+<static>
+    include_path __path_to(share/skin/[% skin_name %]/web)__
+</static>
+
+<View [% site_view_name %]>
+    skin_name [% skin_name %]
+</View>
+
+[%- IF root_controller_namespace %]
+<Controller [% root_controller_namespace %]>
+    window_title [% application_name %]
+</Controller>
+[% END -%]

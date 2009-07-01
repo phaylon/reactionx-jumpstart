@@ -1,0 +1,8 @@
+package [% viewport_package %];
+use Reaction::Class;
+
+use namespace::autoclean;
+
+extends '[% viewport_base %]';
+
+1;

@@ -1,0 +1,16 @@
+package [% application_package %];
+use strict;
+use warnings;
+
+use Catalyst::Runtime '[% catalyst_version %]';
+use Reaction          '[% reaction_version %]';
+
+use Catalyst qw(
+    ConfigLoader
+    Static::Simple
+);
+
+__PACKAGE__->config(name => '[% application_name %]');
+__PACKAGE__->setup;
+
+1;

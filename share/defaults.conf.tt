@@ -1,0 +1,2 @@
+widget_search_path [% site_view_class %]::Widget
+widget_search_path Reaction::UI::Widget

@@ -1,0 +1,10 @@
+package [% widget_package %];
+use Reaction::UI::WidgetClass;
+
+use namespace::autoclean;
+
+[%- IF widget_base != 'Reaction::UI::Widget' %]
+extends '[% widget_base %]';
+[% END -%]
+
+1;

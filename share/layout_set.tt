@@ -1,0 +1,11 @@
+[%- IF widget_name; mark_end = 1 -%]
+=widget [% widget_name %]
+
+[% END -%]
+[%- IF layout_set_base; mark_end = 1 -%]
+=extends [% layout_set_base %]
+
+[% END -%]
+[%- IF mark_end -%]
+=cut
+[% END -%]

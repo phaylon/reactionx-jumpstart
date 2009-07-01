@@ -1,0 +1,34 @@
+
+    For dev and experimentation, invoke like
+
+        REACTIONX_JUMPSTART_SHAREDIR=share/ script/reaction-jumpstart.pl
+
+
+    You should see a series of questions and output
+
+        Namespace of the project? (example: MyApp) MyApp
+        Name of the UI? (example: Web for MyApp::Web) [default Web] 
+        Descriptive name of the application? [default MyApp] 
+         -> writing package MyApp::Web
+        Name of the View? (example: Site for MyApp::Web::View::Site) [default Site] 
+         -> writing package MyApp::Web::View::Site
+         -> writing file test/myapp/share/skin/defaults.conf
+        Name of your application's Skin? [default myapp_web] 
+        Name of the Skin from which your Skin inherits? [default /Reaction/default] 
+         -> creating directory test/myapp/share/skin/myapp_web/layout
+         -> creating directory test/myapp/share/skin/myapp_web/web
+         -> writing file test/myapp/share/skin/myapp_web/skin.conf
+        Create a Root Controller? (The Controller managing '/') [default y] 
+        Name of the Controller? (example: Root for MyApp::Web::Controller::Root)
+          [default Root] 
+        Do you want a base action to push the SiteLayout ViewPort? (y or n)
+          [default y] 
+        Do you want a customized SiteLayout ViewPort, Widget and LayoutSet? (y or
+          n) [default y] 
+         -> writing package MyApp::Web::ViewPort::SiteLayout
+         -> writing package MyApp::Web::View::Site::Widget::SiteLayout
+         -> writing file test/myapp/share/skin/myapp_web/layout/site_layout.tt
+         -> writing package MyApp::Web::Controller::Root
+         -> writing file test/myapp/etc/myapp_web.conf
+
+    The application will be generated below test/

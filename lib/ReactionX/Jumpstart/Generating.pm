@@ -4,8 +4,9 @@ role ReactionX::Jumpstart::Generating with ReactionX::Jumpstart::Stashing {
 
     use Class::Inspector;
     use Template;
-    use File::ShareDir              qw( dist_file );
+    use File::ShareDir              qw( dist_dir );
     use MooseX::Types::Path::Class  qw( Dir );
+    use Path::Class                 qw( dir );
     use Carp                        qw( croak );
 
     use signatures;
@@ -47,10 +48,21 @@ role ReactionX::Jumpstart::Generating with ReactionX::Jumpstart::Stashing {
         );
     }
 
+    method find_share_file (Str $dist, $filename) {
+
+        my $path = dir( $ENV{REACTIONX_JUMPSTART_SHAREDIR} || dist_dir $dist );
+        my $file = $path->file($filename);
+
+        croak "Shared file $file does not exist"
+            unless -e $file;
+
+        return $file;
+    }
+
     method build_package (Str :$package!, Str :$template!, Str :$dist!, HashRef :$vars = {}) {
 
         my $package_filename  = $self->path_to_file('lib', Class::Inspector->filename($package)); 
-        my $template_filename = dist_file($dist, "$template.tt");
+        my $template_filename = $self->find_share_file($dist, "$template.tt");
 
         print " -> writing package $package\n";
 
@@ -59,7 +71,7 @@ role ReactionX::Jumpstart::Generating with ReactionX::Jumpstart::Stashing {
 
     method build_file (Str | Path::Class::File :$file!, Str :$template!, Str :$dist!, HashRef :$vars = {}) {
 
-        my $template_filename = dist_file($dist, "$template.tt");
+        my $template_filename = $self->find_share_file($dist, "$template.tt");
 
         print " -> writing file $file\n";
 

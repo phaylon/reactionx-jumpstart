@@ -6,6 +6,7 @@ class ReactionX::Jumpstart
     with ReactionX::Jumpstart::SubBuilding
     with ReactionX::Jumpstart::Stashing {
 
+
     use MooseX::Types::Moose qw( Str Object );
     use Path::Class          qw( dir );
 
@@ -13,6 +14,9 @@ class ReactionX::Jumpstart
 
     use aliased 'ReactionX::Jumpstart::Application';
     use aliased 'ReactionX::Jumpstart::Config';
+
+
+    our $VERSION = '0.01';
 
 
     has application_builder => (

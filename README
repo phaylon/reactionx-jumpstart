@@ -1,7 +1,7 @@
 
     For dev and experimentation, invoke like
 
-        REACTIONX_JUMPSTART_SHAREDIR=share/ script/reaction-jumpstart.pl
+        REACTIONX_JUMPSTART_SHAREDIR=share/ script/reaction-jumpstart
 
 
     You should see a series of questions and output
